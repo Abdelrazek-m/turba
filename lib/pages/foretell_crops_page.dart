@@ -1,10 +1,11 @@
-
 import 'package:flutter/material.dart';
 import 'package:turba/constant/colors.dart';
 import 'package:turba/widgets/custom_button.dart';
 
 import '../widgets/custom_crops_details.dart';
 import '../widgets/custom_text_view.dart';
+import 'crops_by_time_page.dart';
+import 'forrtell_crops_result_page.dart';
 
 // ignore: must_be_immutable
 class ForetellCropsPage extends StatelessWidget {
@@ -12,18 +13,18 @@ class ForetellCropsPage extends StatelessWidget {
   GlobalKey formKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
-    Map<String,dynamic> data = const {
-      'درجة الحرارة':35,
-      'نتروجين':45,
-      'الرطوبة':65,
-      'فسفور':21,
-      'الرقم الهيدروجيني':45,
-      'بوتاسيوم':123,
-      'معد ل سقوط الأمطار':45,
+    Map<String, dynamic> data = const {
+      'درجة الحرارة': 35,
+      'نتروجين': 45,
+      'الرطوبة': 65,
+      'فسفور': 21,
+      'الرقم الهيدروجيني': 45,
+      'بوتاسيوم': 123,
+      'معد ل سقوط الأمطار': 45,
     };
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.only(top: 25.0, left: 15, right: 15),
+        padding: const EdgeInsets.only(top: 25.0, left: 12, right: 12),
         child: Form(
           key: formKey,
           child: Stack(
@@ -34,9 +35,28 @@ class ForetellCropsPage extends StatelessWidget {
                     Image.asset('assets/images/enteryes.png'),
                     CustomCropDetails(data: data),
                     const SizedBox(height: 20),
-                    const CustomButton(text: 'تنبأ بالمحصول'),
+                    CustomButton(
+                      text: 'تنبأ بالمحصول',
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const ForrtellCropsResultPage(),
+                            ));
+                      },
+                    ),
                     const SizedBox(height: 10),
-                    const CustomTextButton(text: 'رؤيه القراءات السابقة'),
+                    CustomTextButton(
+                      text: 'رؤيه القراءات السابقة',
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const CropsByTimePage(),
+                            ));
+                      },
+                    ),
                     const SizedBox(
                       height: 20,
                     )
@@ -53,7 +73,10 @@ class ForetellCropsPage extends StatelessWidget {
               Positioned(
                 top: 10,
                 child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                  
+                    Navigator.pop(context);
+                  },
                   icon: Icon(
                     Icons.arrow_back_ios_new_rounded,
                     color: AppColors().black,

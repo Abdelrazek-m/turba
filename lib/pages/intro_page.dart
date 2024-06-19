@@ -1,8 +1,9 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:turba/constant/colors.dart';
 import 'package:turba/helper/size_config.dart';
+import 'package:turba/pages/home_page.dart';
+import 'package:turba/pages/login_page.dart';
+import 'package:turba/pages/sginup.dart';
 
 import '../widgets/custom_button.dart';
 
@@ -59,20 +60,42 @@ class IntroPage extends StatelessWidget {
                         SizeConfig(context: context).screenHeightPercentage *
                             18.5),
                 Image.asset('assets/images/Turbalogo.png'),
-                const CustomButton(
+                CustomButton(
                   text: 'إنشاء الحساب',
+                  onTap: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SginUpPage(),
+                        ));
+                  },
                 ),
                 SizedBox(
                     height:
                         SizeConfig(context: context).screenWidthPercentage * 5),
-                const CustomButton(
+                CustomButton(
                   text: 'تسجيل الدخول',
                   reverseGraduint: true,
+                  onTap: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LoginPage(),
+                        ));
+                  },
                 ),
                 SizedBox(
                     height:
                         SizeConfig(context: context).screenWidthPercentage * 5),
-                const CustomTextButton(text: 'تخطي',)
+                 CustomTextButton(
+                  text: 'تخطي',onTap: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HomePage(),
+                        ));
+                  },
+                )
               ],
             ),
           ],

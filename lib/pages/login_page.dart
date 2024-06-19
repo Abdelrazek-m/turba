@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:turba/constant/colors.dart';
 import 'package:turba/helper/size_config.dart';
+import 'package:turba/pages/home_page.dart';
+import 'package:turba/pages/sginup.dart';
 import 'package:turba/widgets/custom_button.dart';
 
 class LoginPage extends StatelessWidget {
@@ -102,16 +104,28 @@ class LoginPage extends StatelessWidget {
                   height:
                       SizeConfig(context: context).screenHeightPercentage * 10,
                 ),
-                const CustomButton(text: "تسجيل الدخول"),
+                 CustomButton(text: "تسجيل الدخول",onTap: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HomePage(),
+                        ));
+                  }, ),
                 SizedBox(
                   height:
                       SizeConfig(context: context).screenHeightPercentage * 2,
                 ),
-                const Row(
+                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    CustomTextButton(text: 'إنشئ حساب'),
-                    Text(
+                    CustomTextButton(text: 'إنشئ حساب', onTap: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SginUpPage(),
+                        ));
+                  },),
+                    const Text(
                       'ليس لديك حساب ؟',
                       style: TextStyle(
                         fontSize: 20,

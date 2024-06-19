@@ -44,6 +44,7 @@ class CustomCropDetails extends StatelessWidget {
               ),
             ),
             TextFormField(
+              enabled: false,
               initialValue: data[details[index]].toString(),
               decoration: InputDecoration(
                 fillColor: AppColors().gray.withOpacity(.38),

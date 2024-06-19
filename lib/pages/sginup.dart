@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:turba/pages/home_page.dart';
 
 import '../constant/colors.dart';
 import '../helper/size_config.dart';
 import '../widgets/custom_button.dart';
+import 'login_page.dart';
 
 class SginUpPage extends StatelessWidget {
   const SginUpPage({super.key});
@@ -137,7 +139,6 @@ class SginUpPage extends StatelessWidget {
                   ),
                 ),
                 TextField(
-                   
                   decoration: InputDecoration(
                     labelStyle: TextStyle(color: AppColors().gray),
                     border: UnderlineInputBorder(
@@ -152,16 +153,34 @@ class SginUpPage extends StatelessWidget {
                   height:
                       SizeConfig(context: context).screenHeightPercentage * 5,
                 ),
-                const CustomButton(text: 'إنشاء الحساب'),
+                CustomButton(
+                  text: 'إنشاء الحساب',
+                  onTap: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HomePage(),
+                        ));
+                  },
+                ),
                 SizedBox(
                   height:
                       SizeConfig(context: context).screenHeightPercentage * 2,
                 ),
-                const Row(
+                Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    CustomTextButton(text: 'سجل الدخول'),
-                    Text(
+                    CustomTextButton(
+                      text: 'سجل الدخول',
+                      onTap: () {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const LoginPage(),
+                            ));
+                      },
+                    ),
+                    const Text(
                       'لديك بالفعل حساب ؟ ',
                       style: TextStyle(
                         fontSize: 20,

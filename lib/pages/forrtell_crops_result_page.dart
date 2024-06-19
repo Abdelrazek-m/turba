@@ -1,6 +1,5 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
+import 'package:turba/pages/home_page.dart';
 import 'package:turba/widgets/custom_button.dart';
 
 import '../constant/colors.dart';
@@ -14,16 +13,18 @@ class ForrtellCropsResultPage extends StatelessWidget {
       body: Stack(
         children: [
           Positioned(
-                top: 40    ,
-                child: IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.arrow_back_ios_new_rounded,
-                    color: AppColors().black,
-                    size: 30,
-                  ),
-                ),
+            top: 40,
+            child: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icon(
+                Icons.arrow_back_ios_new_rounded,
+                color: AppColors().black,
+                size: 30,
               ),
+            ),
+          ),
           Column(
             children: [
               Image.asset('assets/images/farm.png'),
@@ -45,10 +46,17 @@ class ForrtellCropsResultPage extends StatelessWidget {
                 ),
               ),
               Image.asset('assets/images/p1.png'),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               CustomButton(
                 text: 'العودة للصفحه الرئيسيه',
                 fontSize: 24,
+                onTap: () {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HomePage(),
+                      ));
+                },
               )
             ],
           ),

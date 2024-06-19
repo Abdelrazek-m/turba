@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:turba/constant/colors.dart';
+import 'package:turba/pages/foretell_crops_page.dart';
+import 'package:turba/pages/item_details_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -18,11 +20,11 @@ class HomePage extends StatelessWidget {
 
     List<String> data = const [
       'تحليل التربة',
-      'إستشاري المحاصيل',
-      'إنتاجية المحصول',
-      'سقوط الأمطار',
-      'أمراض المحصول',
-      'الأسمدة',
+      // 'إستشاري المحاصيل',
+      // 'إنتاجية المحصول',
+      // 'سقوط الأمطار',
+      // 'أمراض المحصول',
+      // 'الأسمدة',
       'المنتجات',
     ];
 
@@ -67,25 +69,36 @@ class HomePage extends StatelessWidget {
                   crossAxisCount: 2, childAspectRatio: 1.2),
               itemBuilder: (context, index) => Stack(
                 children: [
-                  Container(
-                    margin: const EdgeInsets.all(10),
-                    padding: const EdgeInsets.all(10),
-                    alignment: Alignment.center,
-                    decoration: ShapeDecoration(
-                      color: AppColors().sucandryColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => data[index] == 'تحليل التربة'
+                                ? ForetellCropsPage()
+                                : const ItemDetailsPage(),
+                          ));
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
+                      alignment: Alignment.center,
+                      decoration: ShapeDecoration(
+                        color: AppColors().sucandryColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
                       ),
-                    ),
-                    child: Text(
-                      data[index],
-                      maxLines: 2,
-                      textAlign: TextAlign.center,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 28,
-                        fontWeight: FontWeight.w400,
+                      child: Text(
+                        data[index],
+                        maxLines: 2,
+                        textAlign: TextAlign.center,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 28,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
                     ),
                   ),

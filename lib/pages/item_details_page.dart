@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:turba/helper/size_config.dart';
+import 'package:turba/pages/market_page.dart';
 import 'package:turba/widgets/custom_button.dart';
 
 import '../constant/colors.dart';
@@ -78,14 +79,22 @@ class ItemDetailsPage extends StatelessWidget {
                 ),
               ),
               const CustomButton(text: 'شراء'),
-              const CustomTextButton(text: 'قم بتصميم جهازك'),
+               CustomTextButton(text: 'قم بتصميم جهازك', onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const MarketPage(),
+                            ));
+                      },),
               const SizedBox(height: 20),
             ],
           ),
           Positioned(
               top: 30,
               child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pop(context);
+                },
                 icon: Icon(
                   Icons.arrow_back_ios_new_rounded,
                   color: AppColors().white,
